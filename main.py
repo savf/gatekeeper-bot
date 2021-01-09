@@ -27,12 +27,13 @@ logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s
 
 logger = logging.getLogger(__name__)
 
-
 # Define a few command handlers. These usually take the two arguments bot and
 # update. Error handlers also receive the raised TelegramError object in error.
 def start(update, context):
     """Send a message when the command /start is issued."""
-    update.message.reply_text("Hello, I am the GateKeeper.")
+    update.message.reply_text("Hello, I am the Swiss Mechanical Keyboard Enthusiasts Gatekeeper." \
+                "As soon as a new user joins, they will be restricted to keep them " \
+                "from posting until they prove they are not a robot.")
 
 
 def help(update, context):
@@ -59,42 +60,24 @@ def hodor(update, context):
             )
 
             keyboard_items = [
-                InlineKeyboardButton("🥩", callback_data=callback_id + ',steak'),
-                InlineKeyboardButton("🥝", callback_data=callback_id + ',kiwi'),
-                InlineKeyboardButton("🥛", callback_data=callback_id + ',milk'),
-                InlineKeyboardButton("🥓", callback_data=callback_id + ',bacon'),
-                InlineKeyboardButton("🥥", callback_data=callback_id + ',coconut'),
-                InlineKeyboardButton("🍩", callback_data=callback_id + ',donut'),
-                InlineKeyboardButton("🌮", callback_data=callback_id + ',taco'),
-                InlineKeyboardButton("🍕", callback_data=callback_id + ',pizza'),
-                InlineKeyboardButton("🥗", callback_data=callback_id + ',salad'),
-                InlineKeyboardButton("🍌", callback_data=callback_id + ',banana'),
-                InlineKeyboardButton("🌰", callback_data=callback_id + ',chestnut'),
-                InlineKeyboardButton("🍭", callback_data=callback_id + ',lollipop'),
-                InlineKeyboardButton("🥑", callback_data=callback_id + ',avocado'),
-                InlineKeyboardButton("🍗", callback_data=callback_id + ',chicken'),
-                InlineKeyboardButton("🥪", callback_data=callback_id + ',sandwich'),
-                InlineKeyboardButton("🥒", callback_data=callback_id + ',cucumber')
+                InlineKeyboardButton("Cherry MX", callback_data=callback_id + ',dream'),
+                InlineKeyboardButton("Topre", callback_data=callback_id + ',of'),
+                InlineKeyboardButton("Buckling Spring", callback_data=callback_id + ',electric'),
+                InlineKeyboardButton("Alps", callback_data=callback_id + ',sheep')
             ]
 
             shuffle(keyboard_items)
             keyboard = []
-
-            counter = 0
-            for i in range(4):  # create a list with nested lists
-                keyboard.append([])
-                for n in range(4):
-                    keyboard_item = keyboard_items[counter]
-                    keyboard[i].append(keyboard_item)  # fills nested lists with data
-                    counter += 1
-
+            for i in range(4):
+                keyboard.append([keyboard_items[i]])
             reply_markup = InlineKeyboardMarkup(keyboard)
 
             update.message.reply_text(
                 'Hello, ' +
                 new_member.first_name +
-                ' and welcome to the group. Just a small formality before we allow you to post: please prove that you are not a robot by grabbing a drink below.',
-                reply_markup=reply_markup
+                ' and welcome to the Swiss Mechanical Keyboard Enthusiasts Telegram group. Just a small formality before we allow you to post: Please prove that you are not a robot by choosing "Cherry MX" below. Thank you.',
+                reply_markup=reply_markup,
+                disable_notification=True
             )
     except AttributeError:
         pass
@@ -107,7 +90,7 @@ def button(update, context):
     print("Query data: " + str(query.data))
 
     if query.from_user.id == person_who_pushed_the_button:
-        if 'milk' in query.data:
+        if 'dream' in query.data:
             context.bot.delete_message(
                 chat_id=update.callback_query.message.chat_id,
                 message_id=update.callback_query.message.message_id
@@ -121,7 +104,7 @@ def button(update, context):
                 can_add_web_page_previews=True
             )
         else:
-            query.edit_message_text(text="🚨 A robot suspect was just put on hold! 🚨")
+            query.edit_message_text(text="🚨 Looks like we have another bot. 🚨")
 
 
 def error(update, context):
