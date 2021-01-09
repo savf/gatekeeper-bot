@@ -31,7 +31,7 @@ logger = logging.getLogger(__name__)
 # update. Error handlers also receive the raised TelegramError object in error.
 def start(update, context):
     """Send a message when the command /start is issued."""
-    update.message.reply_text("Hello, I am the Swiss Mechanical Keyboard Enthusiasts Gatekeeper." \
+    update.message.reply_text("Hello, I am the Swiss Mechanical Keyboard Enthusiasts Gatekeeper. " \
                 "As soon as a new user joins, they will be restricted to keep them " \
                 "from posting until they prove they are not a robot.")
 
