@@ -24,7 +24,7 @@ from random import shuffle
 
 # Enable logging
 logger.add("logs/gatekeeper-bot_{time}.log",
-           format="{time} - {name} - {level} - {message}", level="INFO", rotation="5 MB")
+           format="{time} - {name} - {level} - {message}", level="INFO", rotation="5 MB", compression="zip")
 
 # Define a few command handlers. These usually take the two arguments bot and
 # update. Error handlers also receive the raised TelegramError object in error.
