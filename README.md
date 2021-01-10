@@ -1,5 +1,5 @@
 # Gatekeeper bot
-This Telegram bot automatically prevents new users from posting anything. It also uses an inline keyboard which the newly joined user can use to prove that he/she is not a robot.
+This Telegram bot automatically prevents new users from posting anything. It also uses an inline keyboard which the newly joined user can use to prove that he/she is not a robot. The original code was written by [Juhannuspukki](https://github.com/Juhannuspukki) and can be found here: [github.com/Juhannuspukki/gatekeeper-bot](https://github.com/Juhannuspukki/gatekeeper-bot).
 
 ## Setting up
 Set your bot token and chat id as env variables. Add the bot to your group as an admin, so it can read the messages.
